@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Web Developer Express 2010
+# Visual Web Developer Express 2010 -sadiq
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AweSOME.Data", "Libraries\AweSOME.Data\AweSOME.Data.csproj", "{A4275C7D-9C1F-4662-8AD6-6DAF49AF47A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AweSOME.Core", "Libraries\AweSOME.Core\AweSOME.Core.csproj", "{6A45DEAC-1C63-4C4F-8828-7E150208F679}"
