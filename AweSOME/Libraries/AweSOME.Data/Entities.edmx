@@ -7,7 +7,6 @@
     <Schema Namespace="Entities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="EntitiesStoreContainer">
     <EntitySet Name="Regions" EntityType="Entities.Store.Regions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Zones" EntityType="Entities.Store.Zones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Businesses" EntityType="Entities.Store.Businesses" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Countries" EntityType="Entities.Store.Countries" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Customers" EntityType="Entities.Store.Customers" store:Type="Tables" Schema="dbo" />
@@ -24,14 +23,6 @@
     <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
     <Property Name="LastModifiedBy" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Zones">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Memo" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Businesses">
     <Key>
@@ -66,18 +57,31 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Entities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="EntitiesContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Regions" EntityType="Entities.Region" />
-          <EntitySet Name="Zones" EntityType="Entities.Zone" />
+          <EntitySet Name="GeoLocations" EntityType="Entities.GeoLocation" />
           <EntitySet Name="Businesses" EntityType="Entities.Business" />
           <EntitySet Name="Countries" EntityType="Entities.Country" />
-          <EntitySet Name="CounterParties" EntityType="Entities.CounterParties" />
+          <EntitySet Name="CounterParties1" EntityType="Entities.CounterParty" />
           <EntitySet Name="Addresses" EntityType="Entities.Address" />
           <EntitySet Name="Currencies" EntityType="Entities.Currency" />
           <EntitySet Name="Status" EntityType="Entities.Status" />
           <EntitySet Name="EntityTypes" EntityType="Entities.EntityType" />
           <EntitySet Name="ContactInfoes" EntityType="Entities.ContactInfo" />
+          <EntitySet Name="LoginCredentials" EntityType="Entities.LoginCredential" />
+          <EntitySet Name="UserRights" EntityType="Entities.UserRight" />
+          <EntitySet Name="BankInfoes" EntityType="Entities.BankInfo" />
+          <EntitySet Name="EntityType_CounterParty" EntityType="Entities.EntityType_CounterParty" />
+          <EntitySet Name="OrganizationalRoles" EntityType="Entities.OrganizationalRole" />
+          <EntitySet Name="Departments" EntityType="Entities.Department" />
+          <EntitySet Name="OrganizationRoleTypes" EntityType="Entities.OrganizationRoleType" />
+          <EntitySet Name="Employee_OrganizationalRole" EntityType="Entities.Employee_OrganizationalRole" />
+          <EntitySet Name="Orders" EntityType="Entities.Order" />
+          <EntitySet Name="Invoices" EntityType="Entities.Invoice" />
+          <EntitySet Name="AccountTypes" EntityType="Entities.AccountType" />
+          <EntitySet Name="Accounts" EntityType="Entities.Account" />
+          <EntitySet Name="OrderTypes" EntityType="Entities.OrderType" />
+          <EntitySet Name="CreditInfoes" EntityType="Entities.CreditInfo" />
         </EntityContainer>
-        <EntityType Name="Region">
+        <EntityType Name="GeoLocation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -92,21 +96,6 @@
           <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
           <Property Type="String" Name="LastModifiedBy" Nullable="false" />
           </EntityType>
-        <EntityType Name="Zone">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
-          <Property Type="Int32" Name="StNumericCode" Nullable="false" />
-          <Property Type="String" Name="Memo" Nullable="true" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Type="String" Name="CreatedBy" Nullable="false" />
-          <Property Type="String" Name="StatusCode" Nullable="false" />
-          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
-          <Property Type="String" Name="LastModifiedBy" Nullable="false" />
-        </EntityType>
         <EntityType Name="Business">
           <Key>
             <PropertyRef Name="Id" />
@@ -138,7 +127,7 @@
           <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
           <Property Type="String" Name="LastModifiedBy" Nullable="false" />
         </EntityType>
-        <EntityType Name="CounterParties">
+        <EntityType Name="CounterParty">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -223,6 +212,144 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" />
+          <Property Type="String" Name="Cell" Nullable="true" />
+          <Property Type="String" Name="Fax" Nullable="true" />
+          <Property Type="String" Name="WebUrl" Nullable="true" />
+          <Property Type="String" Name="SocialMediaIds" Nullable="true" />
+          <Property Type="String" Name="MessengersIds" Nullable="true" />
+          <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+          <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+          <Property Type="String" Name="Memo" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="String" Name="StatusCode" Nullable="false" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+          <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginCredential">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" />
+          <Property Type="DateTime" Name="ExpiryDate" Nullable="true" />
+          <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+          <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+          <Property Type="String" Name="Memo" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="String" Name="StatusCode" Nullable="false" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+          <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRight">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="BankInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AccountTitle" Nullable="false" />
+          <Property Type="String" Name="AccountNumber" Nullable="false" />
+          <Property Type="String" Name="AccountType" Nullable="true" />
+          <Property Type="String" Name="BranchName" Nullable="false" />
+          <Property Type="String" Name="BankName" Nullable="false" />
+          <Property Type="String" Name="RoutingNumber" Nullable="true" />
+          <Property Type="String" Name="SWIFTCode" Nullable="true" />
+          <Property Type="String" Name="Currency" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" />
+          <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+          <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+          <Property Type="String" Name="Memo" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="String" Name="StatusCode" Nullable="false" />
+          <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+          <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityType_CounterParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="OrganizationalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" />
+          <Property Type="DateTime" Name="SinceDate" Nullable="false" />
+          <Property Type="String" Name="Responsibility" Nullable="false" />
+          <Property Type="String" Name="ParentRoleId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationRoleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ORTAlphaCode" Nullable="false" />
+          <Property Type="Int32" Name="ORTNumericCode" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_OrganizationalRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="CreditInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -230,17 +357,9 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="EntitiesStoreContainer" CdmEntityContainer="EntitiesContainer">
-    <EntitySetMapping Name="Regions">
-      <EntityTypeMapping TypeName="IsTypeOf(Entities.Region)">
+    <EntitySetMapping Name="GeoLocations">
+      <EntityTypeMapping TypeName="IsTypeOf(Entities.GeoLocation)">
         <MappingFragment StoreEntitySet="Regions">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Zones">
-      <EntityTypeMapping TypeName="IsTypeOf(Entities.Zone)">
-        <MappingFragment StoreEntitySet="Zones">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -264,8 +383,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CounterParties">
-      <EntityTypeMapping TypeName="IsTypeOf(Entities.CounterParties)">
+    <EntitySetMapping Name="CounterParties1">
+      <EntityTypeMapping TypeName="IsTypeOf(Entities.CounterParty)">
         <MappingFragment StoreEntitySet="Customers">
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -290,16 +409,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Entities" >
-        <EntityTypeShape EntityType="Entities.Region" Width="1.5" PointX="6.625" PointY="0.5" Height="1.2636116536458335" />
-        <EntityTypeShape EntityType="Entities.Zone" Width="1.5" PointX="8.25" PointY="0.5" Height="1.2636116536458335" />
-        <EntityTypeShape EntityType="Entities.Business" Width="1.5" PointX="4.75" PointY="0.625" Height="1.2636116536458335" />
-        <EntityTypeShape EntityType="Entities.Country" Width="1.5" PointX="6.5" PointY="3.75" Height="2.7427376302083326" />
-        <EntityTypeShape EntityType="Entities.CounterParties" Width="1.5" PointX="0.625" PointY="3.375" Height="2.0853483072916674" />
-        <EntityTypeShape EntityType="Entities.Address" Width="1.5" PointX="2.375" PointY="2.375" Height="2.4140429687500005" />
-        <EntityTypeShape EntityType="Entities.Currency" Width="1.5" PointX="8.125" PointY="3.375" Height="2.5783902994791656" />
+        <EntityTypeShape EntityType="Entities.GeoLocation" Width="1.5" PointX="8.75" PointY="0.5" Height="2.5783902994791665" />
+        <EntityTypeShape EntityType="Entities.Business" Width="1.5" PointX="4.5" PointY="0.5" Height="2.5783902994791665" />
+        <EntityTypeShape EntityType="Entities.Country" Width="1.5" PointX="8.625" PointY="6.125" Height="2.7427376302083326" />
+        <EntityTypeShape EntityType="Entities.CounterParty" Width="1.5" PointX="0.625" PointY="4.875" Height="3.2357796223958326" />
+        <EntityTypeShape EntityType="Entities.Address" Width="1.5" PointX="2.625" PointY="2.375" Height="3.4001269531249996" />
+        <EntityTypeShape EntityType="Entities.Currency" Width="1.5" PointX="8.625" PointY="3.375" Height="2.5783902994791656" />
         <EntityTypeShape EntityType="Entities.Status" Width="1.5" PointX="2.625" PointY="0.5" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="Entities.EntityType" Width="1.5" PointX="0.625" PointY="0.5" Height="1.592306315104167" />
-        <EntityTypeShape EntityType="Entities.ContactInfo" Width="1.5" PointX="4.5" PointY="3.375" Height="1.0992643229166665" />
+        <EntityTypeShape EntityType="Entities.ContactInfo" Width="1.5" PointX="4.5" PointY="3.375" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="Entities.LoginCredential" Width="1.5" PointX="2.5" PointY="6" Height="1.9210009765624996" />
+        <EntityTypeShape EntityType="Entities.UserRight" Width="1.5" PointX="2.5" PointY="9.375" Height="1.0992643229166665" />
+        <EntityTypeShape EntityType="Entities.BankInfo" Width="1.5" PointX="4.625" PointY="7.125" Height="2.5783902994791656" />
+        <EntityTypeShape EntityType="Entities.EntityType_CounterParty" Width="1.875" PointX="0.5" PointY="3.625" Height="1.0992643229166665" />
+        <EntityTypeShape EntityType="Entities.OrganizationalRole" Width="1.5" PointX="6.625" PointY="4.375" Height="1.7566536458333326" />
+        <EntityTypeShape EntityType="Entities.Department" Width="1.5" PointX="6.625" PointY="0.625" Height="1.2636116536458335" />
+        <EntityTypeShape EntityType="Entities.OrganizationRoleType" Width="1.5" PointX="6.625" PointY="2.375" Height="1.592306315104167" />
+        <EntityTypeShape EntityType="Entities.Employee_OrganizationalRole" Width="1.5" PointX="6.625" PointY="6.875" Height="1.0992643229166665" />
+        <EntityTypeShape EntityType="Entities.Order" Width="1.5" PointX="2.375" PointY="12.125" Height="1.0992643229166657" />
+        <EntityTypeShape EntityType="Entities.Invoice" Width="1.5" PointX="4.125" PointY="12.125" Height="1.0992643229166657" />
+        <EntityTypeShape EntityType="Entities.AccountType" Width="1.5" PointX="6.75" PointY="12.125" Height="1.0992643229166657" />
+        <EntityTypeShape EntityType="Entities.Account" Width="1.5" PointX="8.75" PointY="12.125" Height="1.0992643229166657" />
+        <EntityTypeShape EntityType="Entities.OrderType" Width="1.5" PointX="0.625" PointY="12.125" Height="1.0992643229166657" />
+        <EntityTypeShape EntityType="Entities.CreditInfo" Width="1.5" PointX="0.625" PointY="8.5" Height="1.0992643229166657" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Entities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="EntitiesStoreContainer">
+    <EntitySet Name="Regions" EntityType="Entities.Store.Regions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zones" EntityType="Entities.Store.Zones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Businesses" EntityType="Entities.Store.Businesses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Countries" EntityType="Entities.Store.Countries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customers" EntityType="Entities.Store.Customers" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Memo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreatedDate" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Memo" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Businesses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Memo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreatedDate" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ISO3Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumCode" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+</Schema>

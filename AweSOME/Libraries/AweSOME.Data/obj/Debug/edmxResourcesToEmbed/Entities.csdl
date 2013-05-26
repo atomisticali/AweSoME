@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Entities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="EntitiesContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Regions" EntityType="Entities.Region" />
+    <EntitySet Name="Zones" EntityType="Entities.Zone" />
+    <EntitySet Name="Businesses" EntityType="Entities.Business" />
+    <EntitySet Name="Countries" EntityType="Entities.Country" />
+    <EntitySet Name="CounterParties" EntityType="Entities.CounterParties" />
+    <EntitySet Name="Addresses" EntityType="Entities.Address" />
+    <EntitySet Name="Currencies" EntityType="Entities.Currency" />
+    <EntitySet Name="Status" EntityType="Entities.Status" />
+    <EntitySet Name="EntityTypes" EntityType="Entities.EntityType" />
+    <EntitySet Name="ContactInfoes" EntityType="Entities.ContactInfo" />
+  </EntityContainer>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="ISO3Code" Nullable="false" />
+    <Property Type="Int16" Name="NumCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CounterParties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="String" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AccountId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" />
+    <Property Type="String" Name="LastName" Nullable="false" />
+    <Property Type="String" Name="AssociationSince" Nullable="false" />
+    <Property Type="String" Name="AssociationEnded" Nullable="false" />
+    <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AddressLineOne" Nullable="false" />
+    <Property Type="String" Name="AddressLineTwo" Nullable="true" />
+    <Property Type="String" Name="PostalOrZipCode" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="ProvinceOrState" Nullable="false" />
+    <Property Type="String" Name="Country" Nullable="false" />
+    <Property Type="Int32" Name="EtNumericCode" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="IsoShortName" Nullable="false" />
+    <Property Type="String" Name="IsoLongName" Nullable="true" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AlphaCode" Nullable="false" />
+    <Property Type="Int32" Name="NumericCode" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+  </EntityType>
+  <EntityType Name="EntityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AlphaCode" Nullable="false" />
+    <Property Type="Int32" Name="NumericCode" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Int32" Name="StNumericCode" Nullable="false" />
+    <Property Type="String" Name="Memo" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedDate" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Email" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="String" Name="Cell" Nullable="true" />
+    <Property Type="String" Name="Fax" Nullable="true" />
+    <Property Type="String" Name="WebUrl" Nullable="true" />
+    <Property Type="String" Name="SocialMediaIds" Nullable="true" />
+    <Property Type="String" Name="MessengersIds" Nullable="true" />
+  </EntityType>
+</Schema>
